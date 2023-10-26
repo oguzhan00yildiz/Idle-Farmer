@@ -13,7 +13,7 @@ public class FarmFieldManager : MonoBehaviour
     [SerializeField] private List<GameObject> plantedPlants = new List<GameObject>(); // Ekilen bitkilerin listesi
     [SerializeField] private List<GameObject> harvestedPlants = new List<GameObject>(); // Hasat edilen bitkilerin listesi
 
-    private int currentPlantIndex = 0;
+    [SerializeField] private int currentPlantIndex = 0;
 
     void Start()
     {
@@ -21,6 +21,14 @@ public class FarmFieldManager : MonoBehaviour
         foreach (var item in plants)
         {
             item.GetComponent<MeshRenderer>().material.color = Color.white;
+        }
+    }
+
+    private void Update()
+    {
+        if (currentPlantIndex>35)
+        {
+            currentPlantIndex = 0;
         }
     }
 

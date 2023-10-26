@@ -1407,10 +1407,10 @@ MonoBehaviour:
   PlantSlider: {fileID: 485284843}
   HarvestSlider: {fileID: 1150504662}
   timerPlant: 0
-  timerMaxPlant: 1
+  timerMaxPlant: 0.1
   timerActivePlant: 0
   timerHarvest: 0
-  timerMaxHarvest: 1
+  timerMaxHarvest: 0.1
   timerActiveHarvest: 0
 --- !u!4 &888813464
 Transform:
@@ -8635,6 +8635,7 @@ MonoBehaviour:
   brownMaterial: {fileID: 2100000, guid: 2b1afa5b9c0d0db42a3df282fdcfb275, type: 2}
   plantedPlants: []
   harvestedPlants: []
+  currentPlantIndex: 0
 --- !u!1 &3051402341207800602
 GameObject:
   m_ObjectHideFlags: 0
