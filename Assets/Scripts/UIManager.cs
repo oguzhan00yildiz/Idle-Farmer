@@ -26,9 +26,20 @@ public class UIManager : MonoBehaviour
 
     private bool plantingInProgress = false; // Ekim iþlemi sürüyor mu?
 
+    public Button autoFarmButton;
+    public Button autoHarvestButton;
+
+    [SerializeField] private TimerObject farmTimer;
+    [SerializeField] private TimerObject harvestTimer;
+    public static UIManager Instance;
+
+    private bool enoughMoneyToBuyAutoFarm = false;
+    private bool enoughMoneyToBuyAutoHarvest = false;
+
     private void Start()
     {
-        MoneyText.text = Money.ToString() + " MONEE";
+        Instance = this;
+        MoneyText.text = Money.ToString() + " MONEE";  
     }
 
     private void Update()
@@ -121,5 +132,28 @@ public class UIManager : MonoBehaviour
         HarvestedText.text = ReadyPlant.ToString() + " Harvested";
         SoldText.text = SoldPlant.ToString() + " Sold";
         MoneyText.text = Money.ToString() + " MONEE";
+    }
+
+
+    public void StartFarmTimer()
+    {
+        // Auto Farm butonu týklandýðýnda Farm timer'ý baþlatýn
+        if(Money >= 5)
+        {
+            Money -= 5;
+                farmTimer.StartTimer();
+        }
+     
+    }
+
+    public void StartHarvestTimer()
+    {
+        if (Money>5)
+        {
+            Money -= 5;
+            harvestTimer.StartTimer();
+        }
+        // Auto Harvest butonu týklandýðýnda Harvest timer'ý baþlatýn
+        
     }
 }
