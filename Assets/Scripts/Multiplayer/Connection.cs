@@ -10,8 +10,12 @@ public class Connection : NetworkBehaviour
     [SerializeField] private Button hostButton;
     [SerializeField] private Button joinButton;
     [SerializeField] private Button startButton;
+
     [SerializeField] private GameObject startPanel;
     [SerializeField] private GameObject connectionPanel;
+    [SerializeField] private GameObject loadingPanel;
+
+
     [SerializeField] private string playerName;
     void Start()
     {
@@ -21,11 +25,13 @@ public class Connection : NetworkBehaviour
 
         NetworkManager.Singleton.OnClientConnectedCallback += OnClientConnected;
         NetworkManager.Singleton.OnClientDisconnectCallback += OnClientDisconnected;
+
+        
     }
 
     void Update()
     {
-     
+       
     }
 
     void Host()
@@ -39,7 +45,8 @@ public class Connection : NetworkBehaviour
     {
         NetworkManager.Singleton.StartClient();
         connectionPanel.SetActive(false);
-        startPanel.SetActive(true);
+        startPanel.SetActive(false) ;
+        loadingPanel.SetActive(true);   
     }
 
     void StartGame()
@@ -53,14 +60,12 @@ public class Connection : NetworkBehaviour
 
     void OnClientConnected(ulong clientId)
     {
-        // If we are server, say who connected and then stop
         if (IsHost)
         {
             Debug.Log(clientId + " connected");
             return;
         }
 
-        // Client calls this
         ReceiveNameServerRpc(clientId, playerName);
     }
 
@@ -74,13 +79,10 @@ public class Connection : NetworkBehaviour
     void ReceiveNameServerRpc(ulong clientId, string name)
     {
         Debug.Log("Received " + name + " from " + clientId);
-
-        // Now we are server and we call this
-        // and it will run on all clients
         TellMeHisNameClientRpc(clientId, name);
     }
 
-    // Runs on client(s) but is called by server
+    
     [ClientRpc]
     void TellMeHisNameClientRpc(ulong clientId, string name)
     {
