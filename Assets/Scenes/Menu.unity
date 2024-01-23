@@ -864,7 +864,7 @@ MonoBehaviour:
     EnableNetworkLogs: 1
     OldPrefabList: []
   RunInBackground: 1
-  LogLevel: 0
+  LogLevel: 1
 --- !u!4 &1742755985
 Transform:
   m_ObjectHideFlags: 0
@@ -979,6 +979,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hostButton: {fileID: 1910586168}
   joinButton: {fileID: 1005059487}
+  playerName: Host
 --- !u!4 &1878111333
 Transform:
   m_ObjectHideFlags: 0
