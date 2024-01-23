@@ -4,6 +4,7 @@ using UnityEngine;
 using Unity.Netcode;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class Connection : NetworkBehaviour
 {
@@ -15,6 +16,7 @@ public class Connection : NetworkBehaviour
     [SerializeField] private GameObject connectionPanel;
     [SerializeField] private GameObject loadingPanel;
 
+    [SerializeField] private TMP_InputField nameInputField;
 
     [SerializeField] private string playerName;
     void Start()
@@ -31,7 +33,7 @@ public class Connection : NetworkBehaviour
 
     void Update()
     {
-       
+        playerName= nameInputField.text;
     }
 
     void Host()
