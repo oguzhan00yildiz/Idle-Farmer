@@ -18,7 +18,9 @@ public class Connection : NetworkBehaviour
 
     [SerializeField] private TMP_InputField nameInputField;
 
-    [SerializeField] private string playerName;
+    [SerializeField] private GameObject chatPanel;
+
+    public string playerName;
     void Start()
     {
         hostButton.onClick.AddListener(Host);
@@ -34,6 +36,12 @@ public class Connection : NetworkBehaviour
     void Update()
     {
         playerName= nameInputField.text;
+        if (nameInputField.isFocused)
+        {
+            nameInputField.transform.GetChild(0).GetChild(1).gameObject.SetActive(false);
+            
+        }
+        
     }
 
     void Host()
@@ -41,6 +49,7 @@ public class Connection : NetworkBehaviour
         NetworkManager.Singleton.StartHost();
         connectionPanel.SetActive(false);
         startPanel.SetActive(true);
+        chatPanel.SetActive(true);
     }
 
     void Join()
@@ -49,6 +58,7 @@ public class Connection : NetworkBehaviour
         connectionPanel.SetActive(false);
         startPanel.SetActive(false) ;
         loadingPanel.SetActive(true);   
+        chatPanel.SetActive(true);
     }
 
     void StartGame()

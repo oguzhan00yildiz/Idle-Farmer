@@ -33,8 +33,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TimerObject harvestTimer;
     public static UIManager Instance;
 
-    private bool enoughMoneyToBuyAutoFarm = false;
-    private bool enoughMoneyToBuyAutoHarvest = false;
+    //private bool enoughMoneyToBuyAutoFarm = false;
+    //private bool enoughMoneyToBuyAutoHarvest = false;
 
     private void Start()
     {
